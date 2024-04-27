@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToysForU</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+  .header, .footer { background: #f3f3f3; text-align: center; padding: 20px 0; }
+  .products { display: flex; flex-wrap: wrap; justify-content: space-around; padding: 20px; }
+  .product { border: 1px solid #ddd; margin: 10px; padding: 10px; width: calc(33.333% - 20px); box-sizing: border-box; }
+  img { width: 100%; height: auto; }
+  .search { text-align: center; margin: 20px; }
+  .search input[type="text"] { width: 50%; padding: 10px; }
+  .search label { display: block; margin-bottom: 8px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Welcome to ToysForU</h1>
+  <div class="search">
+    <label for="searchInput">Search for toys:</label>
+    <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search for toys...">
+  </div>
+</div>
+
+<div class="products">
+  <div class="product" data-name="Teddy Bear">
+    <img src="teddy.jpg" alt="Teddy Bear">
+    <h2>Teddy Bear</h2>
+  </div>
+  <div class="product" data-name="Lego Set">
+    <img src="lego.jpg" alt="Lego Set">
+    <h2>Lego Set</h2>
+  </div>
+  <!-- Add more products here -->
+</div>
+
+<div class="footer">
+  <p>© 2023 ToysForU - All Rights Reserved</p>
+</div>
+
+<script>
+function searchProducts() {
+  var input = document.getElementById('searchInput');
+  var filter = input.value.toLowerCase();
+  var nodes = document.getElementsByClassName('product');
+  for (i = 0; i < nodes.length; i++) {
+    if (nodes[i].getAttribute('data-name').toLowerCase().includes(filter)) {
+      nodes[i].style.display = "block";
+    } else {
+      nodes[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
